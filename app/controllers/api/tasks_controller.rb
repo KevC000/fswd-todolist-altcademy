@@ -1,12 +1,10 @@
+module Api
 class TasksController < ApplicationController
   before_action :validate_user
-
   def show
     user = User.find_by(id: params[:api_key])
     @task = user.tasks.find_by(id: params[:id])
-
-    return render 'not_found', status: :not_found unless @task
-
+    return render 'not_found', status: :not_found if not @task
     render 'show', status: :ok
   end
 
@@ -87,4 +85,5 @@ class TasksController < ApplicationController
       false
     end
   end
+end
 end
