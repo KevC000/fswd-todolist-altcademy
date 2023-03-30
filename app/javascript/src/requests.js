@@ -32,3 +32,36 @@ export var postTask = function (content, successCB, errorCB) {
 
     $.ajax(request);
 };
+
+export var markComplete = function (id, successCB, errorCB) {
+    var request = {
+        type: 'PUT',
+        url: 'api/tasks/' + id + '/mark_complete?api_key=1',
+        success: successCB,
+        error: errorCB
+    }
+    $.ajax(request);
+};
+
+export var markActive = function (id, successCB, errorCB) {
+    var request = {
+        type: 'PUT',
+        url: 'api/tasks/' + id + '/mark_active?api_key=1',
+        success: successCB,
+        error: errorCB
+    }
+
+    $.ajax(request);
+};
+
+export var deleteTask = function (id, successCB, errorCB) {
+    var request = {
+        type: 'DELETE',
+        url: 'api/tasks/' + id + '?api_key=1',
+        success: successCB,
+        error: function (errorMessage) {
+            console.log(errorMessage);
+        }
+    };
+    $.ajax(request);
+};
